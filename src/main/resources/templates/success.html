@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="css/me.css">
+</head>
+<body>
+<nav class="ui inverted attached segment">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <p2 class="ui teal header">欢迎你</p2>
+            <p2 class="ui teal header" th:text="${session.loginuser.username}">林伟彬</p2>
+            <div class="menu">
+                <a href="/loginout" class="ui teal item">注销</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="m-padded-tb-large m-container-small">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--左-->
+                <div class="five wide column">
+                    <h2><a href="#" th:href="@{/success}" class="item m-mobile"><i class="home icon"></i>个人信息</a></h2><br>
+                    <h2><a href="#" th:href="@{/certification}" class="item m-mobile"><i class="home icon"></i>实名认证</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchroom}" class="item m-mobile "><i class="home icon"></i>客房查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchcustomer}" class="item m-mobile "><i class="home icon"></i>顾客查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchinfo}" class="item m-mobile "><i class="home icon"></i>订单查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/create}" class="item m-mobile "><i class="home icon"></i>开房</a></h2><br>
+                </div>
+                <!--右-->
+
+                <div class="eleven wide column">
+                    <div class="ui teal segment">
+                        <h2 ><i class="home icon"></i>员工个人信息</h2>
+                        <label class="ui  label" th:if="${#strings.isEmpty(session.loginuser.nickname)}">还未进行实名认证</label>
+                        <div class="m-padded-tb-large m-container">
+                            <div class="ui container">
+                                <div class="ui left labeled input" th:unless="${#strings.isEmpty(session.loginuser.nickname)}">
+                                    <label class="ui teal basic label">姓名</label>
+                                    <label class="ui  label" th:text="${session.loginuser.nickname}">林伟彬</label>
+                                </div>
+                                <img src="@{${session.loginuser.avator}}" th:src="@{${session.loginuser.avator}}" class="ui rounded image" alt="" style="width: 200px" >
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fjnu.springboot.mapper.UserMapper">
+
+
+
+
+
+    <select id="SelectByUser" parameterType="org.fjnu.springboot.bean.User" resultType="org.fjnu.springboot.bean.User">
+        select * from employee where username = #{username} and password=#{password}
+    </select>
+
+    <select id="SelectAll"  resultType="org.fjnu.springboot.bean.User">
+        select * from employee
+    </select>
+
+    <insert id="InsertByUser" parameterType="org.fjnu.springboot.bean.User">
+        insert into employee(username,password) values(#{username},#{password})
+    </insert>
+    <update id="UpdateByusername" parameterType="org.fjnu.springboot.bean.User">
+        update employee set nickname=#{nickname} , avator=#{avator} where username = #{username}
+    </update>
+
+</mapper>

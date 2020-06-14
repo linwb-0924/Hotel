@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",initial-scale="1.0">
+    <title>开房</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="css/me.css">
+</head>
+<body>
+<nav class="ui inverted attached segment">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <p2 class="ui teal header">欢迎你</p2>
+            <p2 class="ui teal header" text="linweibin" th:text="${session.loginuser.username}">林伟彬</p2>
+            <div class="menu">
+                <a href="/loginout" class="ui teal item">注销</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="m-padded-tb-large m-container-small">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--左-->
+                <div class="five wide column">
+                    <h2><a href="#" th:href="@{/success}" class="item m-mobile"><i class="home icon"></i>个人信息</a></h2><br>
+                    <h2><a href="#" th:href="@{/certification}" class="item m-mobile"><i class="home icon"></i>实名认证</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchroom}" class="item m-mobile "><i class="home icon"></i>客房查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchcustomer}" class="item m-mobile "><i class="home icon"></i>顾客查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchinfo}" class="item m-mobile "><i class="home icon"></i>订单查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/create}" class="item m-mobile "><i class="home icon"></i>开房</a></h2><br>
+                </div>
+                <!--右-->
+
+                <div class="eleven wide column">
+                    <div class="ui teal segment">
+                        <h2 ><i class="home icon"></i>开房</h2>
+                        <div class="m-padded-tb-large m-container">
+                            <div class="ui container">
+                                <form action="#" method="post"    th:action="@{/createinfo}" class="ui  form">
+                                    <div class="required field">
+                                        <div class="ui left labeled input">
+                                            <label class="ui teal basic label">顾客姓名</label>
+                                            <input type="text" name="cname"  placeholder="顾客姓名">
+                                        </div>
+                                        <div class="ui left labeled input">
+                                            <label class="ui teal basic label">身份证号</label>
+                                            <input type="text" name="cno"  placeholder="身份证号" >
+                                        </div>
+                                        <div class="ui left labeled input">
+                                            <label class="ui teal basic label">电话号码</label>
+                                            <input type="text" name="telephone"  placeholder="电话号码" >
+                                        </div>
+                                        <div class="ui left labeled action input">
+                                            <label class="ui compact teal basic label"> 房间号</label>
+                                            <div class="ui fluid selection dropdown">
+                                                <input type="hidden" name="rno">
+                                                <i class="dropdown icon"></i>
+                                                <div class="default text">房间号</div>
+                                                <div class="menu">
+                                                    <div  th:each="room : ${rooms}" class="item" data-value="1" th:data-value="${room.rno}" th:text="${room.rno}">101</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ui left labeled input">
+                                            <label class="ui teal basic label">押金</label>
+                                            <input type="text" name="deposit"  placeholder="押金" >
+                                        </div>
+                                    </div>
+
+                                    <div class="ui right aligned container">
+                                        <button  class="ui  teal submit button">提交</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script>
+        $('.ui.dropdown').dropdown({
+            on : 'hover'
+        });
+    </script>
+</body>
+</html>

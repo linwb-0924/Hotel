@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fjnu.springboot.mapper.RoomMapper">
+
+
+
+    <select id="SelectAll" resultType="org.fjnu.springboot.bean.Room">
+        select * from room
+    </select>
+
+    <select id="SelectByCount" resultType="Integer">
+        select count(*) from room
+    </select>
+
+    <select id="SelectById" parameterType="String" resultType="org.fjnu.springboot.bean.Room">
+        select * from room where rno = #{rno}
+    </select>
+
+    <insert id="InsertByRoom" parameterType="org.fjnu.springboot.bean.Room">
+        insert into room(rno,rname,rprice) values(#{rno},#{rname},${rprice})
+    </insert>
+
+    <select id="SelectByEmpty" resultType="org.fjnu.springboot.bean.Room">
+        select * from room where rstatus='empty'
+    </select>
+
+    <update id="UpdateByRno" parameterType="String" >
+        update room set rstatus='full' where rno=#{rno}
+    </update>
+
+</mapper>

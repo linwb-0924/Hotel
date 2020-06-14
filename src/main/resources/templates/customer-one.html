@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>顾客查询</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="css/me.css">
+</head>
+<body>
+<nav class="ui inverted attached segment">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <p2 class="ui teal header">欢迎你</p2>
+            <p2 class="ui teal header" text="linweibin" th:text="${session.loginuser.username}">林伟彬</p2>
+            <div class="menu">
+                <a href="/loginout" class="ui teal item">注销</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <div class="m-padded-tb-large m-container-small">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--左-->
+                <div class="five wide column">
+                    <h2><a href="#" th:href="@{/success}" class="item m-mobile"><i class="home icon"></i>个人信息</a></h2><br>
+                    <h2><a href="#" th:href="@{/certification}" class="item m-mobile"><i class="home icon"></i>实名认证</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchroom}" class="item m-mobile "><i class="home icon"></i>客房查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchcustomer}" class="item m-mobile "><i class="home icon"></i>顾客查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/searchinfo}" class="item m-mobile "><i class="home icon"></i>订单查询</a></h2><br>
+                    <h2><a href="#" th:href="@{/create}" class="item m-mobile "><i class="home icon"></i>开房</a></h2><br>
+                </div>
+                <!--右-->
+
+                <div class="eleven wide column">
+                    <div class="ui teal segment">
+                        <h2 ><i class="home icon"></i>顾客查询</h2>
+                        <form  name="search" action="#" th:action="@{/searchcustomer}" method="post">
+                            <div class="ui icon  input m-mobile">
+                                <input type="text" name="query" placeholder="请输入顾客身份证号...">
+                                <i onclick="document.forms['search'].submit()"  class="search link icon"></i>
+                            </div>
+                        </form>
+                        <div class="ui teal segment" th:each="customer : ${customers}">
+                            <div class="ui stackable grid">
+                                <h4>身份证号:</h4>
+                                <p th:text="${customer.cno}">1</p>
+                            </div>
+                            <div class="ui stackable grid">
+                                <h4>顾客姓名:</h4>
+                                <p th:text="${customer.cname}">1</p>
+                            </div>
+                            <div class="ui stackable grid">
+                                <h4>顾客电话:</h4>
+                                <p th:text="${customer.telephone}">1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+</body>
+</html>
