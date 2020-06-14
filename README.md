@@ -35,7 +35,6 @@ information表
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200613200958597.png)
 修改rabbitmq相关配置
 
-[rabbitmq安装配置不会点这](https://www.jianshu.com/p/3874a446a1e0)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200613201101907.png)
 修改邮箱发送的相关配置（邮箱需开启smtp服务）
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200613201137573.png)
